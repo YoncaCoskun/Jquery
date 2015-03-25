@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../JQUERYScripts/jquery-2.1.3.min.js"></script>
+    <style>
+        .buton {
+        border:solid 1px black;
+        width:50px;
+        height:50px;
+        background-color:#feb781;
+        float:left;
+        }
+
+    </style>
+    <script>
+        //body tag ları arasında olmadıgı ıcın boyle calısmaz,sayfa acıldıgında dıv lerden once jquery calıstırmak ıcın ready event kullanırız
+        //ready yerıne:
+        //$(document).load(function () { }) kullanılabilir
+        //hangi div e tıklarsam o div yesil olsun
+        $(document).ready(function(){
+        $(document).on("click", ".buton", function (event) {
+            //ustune bastıgımızda rengi yesıl yapıp tekrar vasıldıgında eskı rengıne getırme
+            var seciliNesne = $(event.currentTarget);
+            var gelen = seciliNesne.attr("yonca");
+            if (gelen == "1") {
+                seciliNesne.attr("yonca", "0");
+                event.currentTarget.style.backgroundColor = "#feb781";
+            } else {
+                seciliNesne.attr("yonca", "1");
+                event.currentTarget.style.backgroundColor = "green";  //tıklanan resmin arka plan resmını degıstırmek
+            }
+
+        });
+        })
+    </script>
+</head>
+<body>
+
+    <div style="width:210px;">
+        <div class="buton"></div>
+        <div class="buton"></div>
+        <div class="buton"></div>
+        <div class="buton"></div>
+        
+    </div>
+    <div style="width:210px;">
+        <div class="buton"></div>
+        <div class="buton"></div>
+        <div class="buton"></div>
+        <div class="buton"></div>
+    </div>
+    <div style="width:210px;">
+        <div class="buton"></div>
+        <div class="buton"></div>
+        <div class="buton"></div>
+        <div class="buton"></div>
+    </div>
+    <div style="width:210px;">
+        <div class="buton" yonca="0"></div> 
+        <div class="buton" yonca="0"></div>
+        <div class="buton" yonca="0"></div>
+        <div class="buton" yonca="0"></div>
+    </div>
+
+    <script>
+
+
+       
+
+    </script>
+</body>
+</html>

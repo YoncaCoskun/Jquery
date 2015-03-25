@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../JQUERYScripts/jquery-2.1.3.min.js"></script>
+</head>
+<body>
+    <input id="Text1" type="text" />
+    <input id="Button1" type="button" value="button" />
+
+    <script>
+        //butona basıldıgımızda text ıcıne yazılan yazı alert olarak  gorunsun
+
+
+        jQuery("#Button1").click(function () {
+
+            alert($("#Text1").val());
+        });
+
+        //----------------------------Mouse tusu eventleri----------------------------------------
+        $("#Button1").click(function () { });
+        $("#Button1").dblclick(function () { });
+        $("#Button1").mousedown(function () { });
+        $("#Button1").mouseup(function () { });
+
+        //------------------------Mouse Hareketi eventleri--------------------------------------------------------
+
+
+        $("#Button1").mousemove(function () { });  //buton ustunde hareket etmek
+        $("#Button1").mouseenter(function () { });  //kenar cızgılerını alarak ustune gırmeyı kaplar
+        $("#Button1").mouseover(function () { });  //buton ustune gelme,
+        $("#Button1").mouseout(function () { });  //kenar cızgısının tamamen dısına cıkınca
+        $("#Button1").mouseleave(function () { }); //nesnenin cizgisinin kenarına dahi cıksa yetıyor
+
+        //--------------------------------------------------------Klavye Tusları olayları--------------------------------------
+
+        $("#Button1").keydown(function () { });  //basma
+        $("#Button1").keyup(function () { });   //cekme
+        $("#Button1").keypress(function () { });   //basıp cekme
+
+
+
+
+    </script>
+</body>
+</html>

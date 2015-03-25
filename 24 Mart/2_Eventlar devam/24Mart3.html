@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../JQUERYScripts/jquery-2.1.3.min.js"></script>
+</head>
+<body>
+    <div style="border:solid 2px black; width:300px;height:300px;"></div>
+
+    <script>
+        //$("div").live(); bind gibi calısıyordu ancak 1.9 versiyonunda kaldırıldı
+
+        //hem bind hem delegate ın yaptıgını yapan event:
+
+        $("div").on("click", function () {  //bind ın yapabildigini yaptık
+            alert("olay gerceklesti");
+        });
+        
+        $(document).on("click","div", function () { //delegate ın yaptıgını yaptık bu formatla
+            alert("olay gerceklesti");
+        });
+
+
+    </script>
+</body>
+</html>

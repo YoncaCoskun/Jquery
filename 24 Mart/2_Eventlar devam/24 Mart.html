@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../JQUERYScripts/jquery-2.1.3.min.js"></script>
+    <script>
+        //------------------------------event(olay) atama-------------------------------------------------
+        function olayAta(htmlElement,olay) {
+            $(document).delegate(htmlElement, olay, function () {  //htmlElement="div" olay="keyup" strıng olarak gelirler
+                alert("olay gerceklesti")
+            });
+        }
+        //$(document).ready(function () {   bu sekılde de body dekı scrıpt tı buraya yazabılırız.body dekı script ıle aynı anlamda
+        //    olayAta("div","click");
+        //});
+    </script>
+</head>
+<body>
+
+    <div style="border:2px solid black;width:100px;height:50px;"></div>
+
+    <script>
+        olayAta("div","click");
+
+    </script>
+
+
+</body>
+</html>

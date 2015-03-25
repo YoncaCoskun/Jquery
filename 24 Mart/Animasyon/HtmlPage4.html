@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="JQUERYScripts/jquery-2.1.3.min.js"></script>
+</head>
+<body>
+    <input id="Button1" type="button" value="button" />
+    <img src="images.jpg"width="300" height="300" />
+
+   
+    <script>
+        //ilk butona bastıgımda ilk resım ikinci bastıgımda ıkıncı resım gozukecek yanı butona her bastıgımda resımler degısecek(slider gibi)
+
+        var resimler = ["images.jpg","Polarlicht_2_kmeans_16_large.png"];
+        var ilkResimMi = true;
+      
+
+        $("input").click(test=function () {
+           
+                var resim = $("img");
+                if (ilkResimMi) {
+                    resim.fadeToggle(1000, function () {
+                        resim.attr("src", resimler[1]);
+                    });
+
+                }
+                else {
+                    resim.fadeToggle(1000, function () {
+                        resim.attr("src", resimler[0]);
+                    });
+                }
+                    resim.fadeToggle(1000);
+                    ilkResimMi = !ilkResimMi;
+                    setTimeout("test()",3000);
+ 
+        });
+
+        
+
+
+    </script>
+</body>
+</html>

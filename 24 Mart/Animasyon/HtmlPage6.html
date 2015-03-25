@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="JQUERYScripts/jquery-2.1.3.min.js"></script>
+</head>
+<body>
+    <button>Animasyon Yap</button>
+    <div style="border:solid 2px red; width:300px; height:300px; background-color:rgba(255,0,0,0.2);"></div>
+
+    <script>
+
+        $("button").click(function () {
+
+            $("div").animate(
+                {
+                    width: "+=50",
+                    marginLeft: "+=25",
+                    opacity:"-=0.2"  //seffaflastırma gıtgıde
+                    
+                }
+                , 1000);  //animasyon yapımı
+
+        });
+
+    </script>
+</body>
+</html>
