@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="JQUERYScripts/jquery-2.1.3.min.js"></script>
+
+    <style>
+        ul, li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+            ul#menu {
+                width: 454px;
+            }
+
+                ul#menu li {
+                    float: left;
+                    height: 35px;
+                    background-image: url('menu_bg.png');
+                }
+
+                    ul#menu li.m1 { /*id si menu olan ul lerin altında classı m1 olan li ler*/
+                        width:99px;
+                        background-position:0 0; /*arka plan pozisyonu(resmi x yonunde 0 pozisyonu, y yonunde sıfır pozisyonuna getır anlamında)*/
+
+                    }
+                    ul#menu li.m2 {
+                        width: 99px;
+                        background-position: -99px 0;
+                    }
+                    ul#menu li.m3 {
+                        width: 78px;
+                        background-position: -198px 0;
+                    }
+                    ul#menu li.m4 {
+                        width: 78px;
+                        background-position: -276px 0;
+                    }
+                    ul#menu li.m5 {
+                        width: 99px;
+                        background-position: -354px 0;
+                    }
+
+                ul#menu a {
+                    display: block; /*resmın ustundekılerı yok etmek ıcın*/
+                    text-decoration: none;
+                    height: 35px;
+                    text-indent: -9999px; /*resmın ustundekılerı yok etmek ıcın ucuruyoruz yani sayfadan*/
+                }
+                ul#menu li:hover { /*bu kod jquery kodu yerıne daha kolay ve az kod css3 cok daha kolay yazıma sahip*/
+                    background-position-y: -35px;
+                    transition: background-position-y 0.3s ease;
+                }
+    </style>
+
+    <script>
+
+        //$(document).ready(function() {
+        //    $("ul#menu li").hover(function () {
+        //        $(this).stop().animate({  //stop koymamızın sebebi, mouse u sureklı oynattıgımızda mouse cekmemıze ragmen anımasyon gecıslerıne devam etmesınden kaynaklı
+        //            "background-position-y" : "-35px"
+        //        },300);
+        //    }, function () {
+        //        $(this).stop().animate({
+        //            "background-position-y": "0px"
+        //        }, 300);
+        //    });
+
+        //});
+        
+        
+
+
+    </script>
+</head>
+<body>
+    <!------------------menu bg nın aynısını yapmaya calısıyoruz(photoshop gıbı)---------------->
+    <ul id="menu">
+        <li class="m1"><a href="#">anasayfa</a></li>
+        <li class="m2"><a href="#">hakkımda</a></li>
+        <li class="m3"><a href="#">Jquery</a></li>
+        <li class="m4"><a href="#">iletişim</a></li>
+        <li class="m5"><a href="#">sözlerim</a></li>
+
+    </ul>
+</body>
+</html>

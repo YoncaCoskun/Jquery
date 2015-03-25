@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <!--------------------------------------------LOKASYON ALMA----------------------------------------------------------------->
+</head>
+<body>
+    <input type="button" value="lokasyon al" onclick="lokasyonAl()" />
+    <script>
+        function lokasyonAl() {
+            navigator.geolocation.getCurrentPosition(lokasyonGoster); // bulundugumuz yerin pozisyonunu veriyor(enlem-boylam)
+
+
+
+        }
+
+        function lokasyonGoster(lokasyon) {
+            var enlem = lokasyon.coords.latitude;  //enlem bilgisi
+            var boylam = lokasyon.coords.longitude;  //boylam bilgisi
+
+            alert("enlem : " + enlem + "\nBoylam : " + boylam);
+
+            //kullanıcıının enlem ve boylam bilgilerini izin almadan alamayız.
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="JQUERYScripts/jquery-2.1.3.min.js"></script>
+    <script>
+
+        $(function () {
+            for (var y = 0; y< 8; y++) {
+
+                var div = $("<div></div>"); //her satır da bır dıv olusturduk
+
+                for (var x = 0; x < 8; x++) {
+
+                    var buton = $("<input/>");
+                    buton.attr("type", "button");
+                    buton.attr("id",x+"x"+y);
+                    buton.css("width", "60px");
+                    buton.css("height", "60px");
+                    if ((x+y) %2 == 0) {
+                        buton.css("background-color", "black");
+                    }
+                    else {
+                        buton.css("background-color", "white");
+                    }
+                    buton.click(butonClick);  //herhangı bı butona bastıgımızda alert verır
+                    div.append(buton);
+                    
+                }
+                $("div:eq(1)").append(div); //ana div
+            }
+           
+        });
+        var buton;
+        function butonClick(event) {
+            if (buton != undefined) {
+                //eski rengin, geri alabilme
+                var dizi = buton.attr("id").split("x");  //butonlardakı ıd lere bak ve onları split et
+                var toplam = parseInt(dizi[0]) + parseInt(dizi[1]);
+                if (toplam % 2 == 0) {
+                    buton.css("background-color", "black");
+                }
+                else {
+                    buton.css("background-color", "white");
+                }
+            }
+
+            buton = $(event.currentTarget);
+            var dizi = buton.attr("id").split("x");
+            //piyon icin
+            piyonIsaretle(dizi);
+
+            buton.css("background-color","red");
+            //alert(buton.attr("id"));  // buton ıclerınde x y durumlarını sdce alert te gosterıyoruz
+
+        }
+        function piyonIsaretle(dizi) {
+            var yeniId = dizi[0] + "x" + (parseInt(dizi[1]) - 1);
+            $("#" + yeniId).css("background-color", "darkblue");
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <input type="radio" name="1" style="margin-left:40px;"/>Piyon
+        <input type="radio" name="1" style="margin-left:40px;" />Fil
+        <input type="radio" name="1" style="margin-left:40px;" />Kale
+        <input type="radio" name="1" style="margin-left:40px;" />At
+    </div>
+    <div>
+        
+    </div>
+</body>
+</html>

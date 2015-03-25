@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../JQUERYScripts/jquery-2.1.3.min.js"></script>
+    <script>
+        //$(document).ready(function () {
+        //    $("#Button1").click(function () {
+        //        $("#Text1").val("JQuery");
+        //    });
+        //});
+
+        //$(function () {
+         //ready fonk ıle aynıdır
+        //});
+        //$(function () {
+        //    $("#Text1").focus(function () { 
+        //        $("#Text1").blur();  //odaklamayı engeller(focus un tersını yapar)
+        //    });
+        //    $("#Button1").click(function () {
+        //        //$("#Text1").val("JQuery");  //set etme
+        //        //alert($("#Text1").val());  //get etme 
+        //        //$("#Text1").focus();//butona bastıgımızda text ıcıne focus landı
+               
+
+                
+        //    });
+        //});
+
+        //kullanıcı blur oldugunda alert gosterın
+        $(function () {
+            $("#Text1").focus(function () {
+                $("#Text1").blur(function () { //blur ıcıne bir fonk verırsek event olarak calısıyor ama blur ıcıne fonk vermezsek metot oluyor
+                    alert("blur oldu");
+                });                
+            });           
+        });
+    </script>
+</head>
+<body>
+    <!--------------------------------------------------FocusAppend-------------------------------->
+    <input id="Text1" type="text" />
+    <input id="Button1" type="button" value="button" />
+
+</body>
+</html>

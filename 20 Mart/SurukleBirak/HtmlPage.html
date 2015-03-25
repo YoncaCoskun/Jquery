@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style>
+        .divler {
+        border:1px solid #0094ff;
+        float:left;
+        margin:10px;
+        padding:10px;
+        width:100px;
+        height:100px;
+       
+        }
+    </style>
+</head>
+<body>
+    <!-------------------------------------------------RESMİ SURUKLEYIP BASKA BIRYERE BIRAKMAK-(get ve setler)-------------------------------------------->
+    <div>
+        <div class="divler" ondragover="birakmayaIzinVer(event)" ondrop="birak(event)">
+            <img id="resim" draggable="true" src="resim.jpg" width="100" height="100" ondragstart="surukle(event)" />  <!----draggable suruklemeye ızın ver anlamında-->
+
+        </div>
+        <div class="divler" ondragover="birakmayaIzinVer(event)" ondrop="birak(event)"></div>  <!--------ondragover bırakmaya ızın verır-->
+        <div class="divler" ondragover="birakmayaIzinVer(event)" ondrop="birak(event)"></div>
+    </div>
+    <div>
+        <div class="divler" ondragover="birakmayaIzinVer(event)" ondrop="birak(event)">
+            <img id="resim2" draggable="true" src="resim.jpg" width="100" height="100" ondragstart="surukle(event)" />  <!----draggable suruklemeye ızın ver anlamında-->
+
+        </div>
+        <div class="divler" ondragover="birakmayaIzinVer(event)" ondrop="birak(event)"></div>  <!--------ondragover bırakmaya ızın verır-->
+        <div class="divler" ondragover="birakmayaIzinVer(event)" ondrop="birak(event)"></div>
+    </div>
+
+    <script>
+        function birakmayaIzinVer(kim) {
+            kim.preventDefault();
+
+        }
+        function surukle(kim) {
+            kim.dataTransfer.setData("anahtar", kim.target.id);//suruklenecek olan resmın ıd sını anahtar yanına yazarız(kim.target.id yazılır)
+        }
+        
+        function birak(kim) {
+            
+            if (kim.srcElement.localName== "div" ) {  // resim resim uzerıne getırememek icin bu if kosulunu kullanırız
+                var birakilacakFotoId = kim.dataTransfer.getData("anahtar");
+                var foto = document.getElementById(birakilacakFotoId);
+                foto.parentElement.style.backgroundColor = "white";  //fotoyu tasıdıgımızda eskı bulundugu yerın beyaz olmasını sagladık
+                kim.target.appendChild(foto);
+                kim.target.style.backgroundColor = "red";  //bırakınca oranın arka rengını degıstırıyoruz
+            }
+         
+        }
+
+
+    </script>
+</body>
+</html>

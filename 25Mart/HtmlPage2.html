@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="JQUERYScripts/jquery-2.1.3.min.js"></script>
+    <script>
+        $(function () {
+            //bir div icinde bir buton eklemek ıstıyorsak: herzaman en sona ekler
+                        //$("#alan").append("<input type='button' value='buton'/>");  //baba diviniz bellıyse cocugu verın eklesın
+                       // $("<input type='button' value='buton'/>").appendTo($("#alan")); //eger cocuk bellıyse append to ıle eklerız
+            //butonu bu sekılded e olusturabılırız:
+                        var buton = $("<input/>");
+                        buton.attr("type", "button");
+                        buton.attr("value", "Onayla");
+                        buton.click(function () { alert("test"); });
+                        buton.appendTo("#alan");
+            //bu butona click olayı verebiliriz 
+        });
+
+    </script>
+</head>
+<body>
+    <!--------------------------------------Append------------------------------------------------->
+    <div id="alan" style="border:solid 1px black; width:200px; height:200px;">
+        <p>Birinci Alan</p>
+        <p>İkinci Alan</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="http://maps.google.com/maps/api/js?sensor=false"> //script olarak basıyoruz(baskalarının int ten dosyasını bu sekılde kullanabiliyoruz)</script>
+</head>
+<body>
+    <!----------------------------lokasyonu google uzerınde kullanmak---------------------------------------------------->
+    <input type="button" value="harita goster" onclick="haritaGoster()" />
+    <div id="haritaAlani" style="border:solid 1px black; height:300px;"></div>
+    <script>
+
+        // http://maps.google.com/maps/api/js?sensor=false bize haritayı image image vericek
+
+        function haritaGoster() {
+            navigator.geolocation.getCurrentPosition(haritaBas);
+
+        }
+        function haritaBas(lokasyon) {
+            //nereyi gostereceksen oranın nesnelerını olustur:
+            var enlemBoylam = new google.maps.LatLng(lokasyon.coords.latitude,lokasyon.coords.longitude);
+
+         
+            //haritanın nekadar buyutulecek,nekadar ne yapılacaksa bunu json nesnesıyle(haritaDetay) belırlerız:
+            var haritaDetay = {
+                center: enlemBoylam,
+                zoom: 15,
+                mapTypeId: google.maps.MapTypeId.ROADMAP, //haritadan yol haritası istedik
+                mapTypeControl:true, //yakınlastırabılsın uzaklastırabılsın harıtayı dondurebılmesı ıcın bu kullanılır
+                navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL} //google ın gelen tool unun  nasıl gozukmesı gerektıgını gosterır
+
+            };
+
+      
+            //harita uzerıne isaret attırmak ıcın:
+            var pin = "pin.png";
+
+            var googleHarita = new google.maps.Map(haritaAlani, haritaDetay); //bunu yaptıgımızda harita goruntulenır
+            var isaretleyici = new google.maps.Marker( {
+                position: enlemBoylam, //bulundugun yer
+                map: googleHarita,  //googleharita uzerınde ısaretleme yaptırmak ıcın
+                icon:pin,              
+                title:"Suanda buradasınız"
+                
+            });
+
+            var daireBilgi = {  //marker ustune daıre cızmek
+                center:enlemBoylam,
+                map: googleHarita,
+                clickable: false,
+                radius: 100,
+                fillColor: '#ff0000',
+                fillOpacity: .3,
+                strokeColor: 'black',
+                strokeOpacity: .4,
+                strokeWeight: .8,
+                
+            };
+           var daire = new google.maps.Circle(daireBilgi);
+            
+            
+        }
+    </script>
+</body>
+</html>
