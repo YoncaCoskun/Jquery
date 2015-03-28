@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="JQUERYScripts/jquery-2.1.3.min.js"></script>
+    <script>
+        //
+
+        $(document).ready(function () {
+            //$("#alan").after("<button>yeni buton</buton>");  //div in altına butonu ekler
+            //$("<buton>yeni buton</buton>").insertAfter("#alan");  //bu da div in altına butonu ekler baba-cocuk ılıskısı append lerdekı gıbı...
+
+            //-----------------------------------------------------------------------------------------------------------------
+
+            //$("#alan").before("<button>yeni buton</buton>");
+            //$("<buton>yeni buton</buton>").insertBefore("#alan");
+
+            //-----------------------------------------------------------------------------------------------------------------
+
+            //SORU: alanın ıcerısındekı bır p tagın altına buton ekleyınız
+            //$("#alan p:eq(0)").after("<button>buton</buton>");
+
+
+            //-----------------------------------------------------------------------------------------------------------------
+            //DİV İCİNDEKİ İLK P Yİ YOK ETMEK ISTIYORSAK:
+            //$("#alan p:first").empty();   //alan ıcındekı ılk p tagının icini sılıyor
+
+            //--------------------------------------------------------------------------------------------------------------------
+            //$("#alan p:first").remove();  //tamamen p tagı ıle bırlıkte silmek istiyorsak kullanılır
+
+            //id si test olanı sildirmek
+            $("#alan p").remove("#test");
+
+        });
+        
+        
+      
+
+
+    </script>
+
+</head>
+<body>
+    <div id="alan" style="border:solid 1px black; width:200px; height:200px;">
+
+        <p>Birinci Alan</p>
+        <p>İkinci Alan</p>
+    </div>
+</body>
+</html>

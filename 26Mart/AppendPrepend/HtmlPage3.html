@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="JQUERYScripts/jquery-2.1.3.min.js"></script>
+    <!--------------------------------------------------------STILLENDIRME YAPMAK-------------------------------------------------------->
+    <style>
+        .divAlani {
+            background-color:#84e4f6;
+            width:300px;
+            height:300px;
+            border:1px solid black;
+
+        }
+        .yaziAlani {
+            padding:50px;
+        
+        }
+        .yaziAlani:hover {
+            background-color:#bad7cd;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                //$("div").addClass("divAlani yaziAlani");  //butun divleri div alanı classına atadık.Bir div bir cok class verilebilir
+                $("div").toggleClass("divAlani yaziAlani"); //tıkladıgımızda ekledı bıdaha tıkladıgımızda gerı cıkarıyor
+
+                //$("div").hasClass("divAlani yaziAlani"); //bu class lara sahipse bu kontrolunu yapıyor,gerıye boolean deger donuyor
+            });
+            $("input").click(function () {
+                //$("div").removeClass("yaziAlani");  //yaziAlani classına ait ozellıklerı ve classı sılıyoruz bu sekılde
+            });
+        });
+
+
+    </script>
+</head>
+<body>
+    <button>Stil Uygula</button>
+    <input type="button" value="Stil Sil"/>
+    <div>
+        Merhaba Dunya
+    </div>
+</body>
+</html>

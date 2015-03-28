@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="JQUERYScripts/jquery-2.1.3.js"></script>
+    <script src="JQUERYScripts/jquery-ui-1.11.2.js"></script>
+    <link href="JQUERYScripts/jquery-ui.css" rel="stylesheet" />
+    
+    <script>
+        $(document).ready(function () {
+           
+            var ayarlar = {
+                modal: true,
+                autoOpen: false,
+                width: 400,
+                height: 400,
+                title:"test",     //baslık verme
+                resizable:false,  //boyutlandırmayı iptal ettik
+                show: {
+                    effect: "bounce",
+                    duration:1000
+                },
+                hide:{
+                    effect: "explode",
+                    duration:1000
+                },
+                buttons: {
+                    Tamam:function(){
+                        $(this).parent().effect("shake",500);
+                    },
+                
+                    Vazgeç:function() {
+                        $(this).dialog("close");
+
+                    }
+
+                }
+            };
+                $("#alan").dialog(ayarlar);
+                      
+        });
+
+        function goster() {
+            $("#alan").dialog("open");
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="Göster" onclick="goster()" />
+    <div id="alan">
+        <p>Farklı da görünebilirim.</p>
+        <table>
+            <tr>
+                <td>Adınız</td>
+                <td><input id="Text1" type="text" /></td>
+            </tr>
+            <tr>
+                <td>Soyadınız</td>
+                <td><input id="Text1" type="text" /></td>
+            </tr>
+            <tr>
+                <td>Telefon Numaranız</td>
+                <td><input id="Text1" type="text" /></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

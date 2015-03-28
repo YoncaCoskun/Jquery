@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="JQUERYScripts/jquery-2.1.3.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.get("Dosya.txt", function (veri,durum,hata) {
+                //veri:okunmus data ıcındeki veriyi bize saglayacak
+                if (durum=="success") {
+                    $("div").html(veri);
+                }
+                else {
+                    alert(hata.statusText);
+                }
+            });
+            //get i post yaptıgımız zaman dosya okumaz cunkyu post ıcın mutlaka veri gerekir.bunu ıcın vericekme diye bir webform olusturduk
+        });
+
+
+    </script>
+</head>
+<body>
+    <!--------------------------------Biraz oncekı dosyayı jquery ıle okumak(Daha Kolay)---------->
+    <div>
+
+    </div>
+</body>
+</html>

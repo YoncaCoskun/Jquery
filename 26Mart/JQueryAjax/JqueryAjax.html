@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="JQUERYScripts/jquery-2.1.3.min.js"></script>
+    <script>
+        //---------------------JQUERYAjax-(en cok kullanılan yontem)--------------------------------------------------
+        
+        //------------------------------------------POST OLDUGUNDA-----------------------------------------------------
+
+        //$(document).ready(function () {
+
+        //    var ayarlar = { //json nesnesi olusturduk,burdaki anahtarlar sabittir ezberle.
+        //        url: "VeriCekme.aspx",
+        //        method: "POST",
+        //        data: { isim: "Yonca", soyisim: "Coskun" },
+        //        success: function (data,status) {
+        //            $("div").html(data);
+        //        },
+        //        error: function(e) {
+        //            alert(e.statusText);
+        //        }
+
+        //    };
+
+
+        //    $.ajax(ayarlar);
+
+
+
+        //});
+
+        //---------------------------------------------GET OLDUGUNDA--------------------------------------------------------------------------------
+
+        $(document).ready(function () {
+
+
+            $.ajax(
+            { 
+                url: "VeriCekme.aspx?isim=Yonca&&soyisim=Coskun",
+                method: "GET",             
+                success: function (data, status) {
+                    $("div").html(data);
+                },
+                error: function (e) {
+                    alert(e.statusText);
+                }
+
+            }
+             );
+
+        });
+    </script>
+</head>
+<body>
+    <div>
+
+    </div>
+</body>
+</html>

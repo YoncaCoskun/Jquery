@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <link href="JQUERYScripts/jquery-ui.css" rel="stylesheet" />
+    <script src="JQUERYScripts/jquery-2.1.3.js"></script>
+    <script src="JQUERYScripts/jquery-ui-1.11.2.js"></script>
+
+
+    <style>
+        .carpiYok .ui-dialog-titlebar-close{
+            display:none; /*cıkan dialogun carpısını yok etmeye calıstık*/
+
+        }
+    </style>
+
+
+
+    <script>
+        //json nesnelerini json.parse ile parse ederiz cunku ekledıgımızde strıng deger gelıyor
+        var kayitlar;
+        $(document).ready(function () {
+            kayitlar = JSON.parse(localStorage.getItem("kayitlar"));
+            if (kayitlar==null) {
+                kayitlar = [];
+            }
+            kayitGoruntule();
+
+        });
+
+        function kayitGoruntule() {
+            $("table tbody").empty();
+            for (var i in kayitlar) {
+            
+                var kayit = kayitlar[i];   //kayıtların ıcerısınde json datası olacak dıye tahmın edıyoruz {isim:serkan,mail:s@s.com,sifre:xxx}
+
+                var satir = $("<tr></tr>");
+                satir.append("<td>"+kayit.isim+"</td>");
+                satir.append("<td>"+kayit.mail+"</td>");
+                satir.append("<td>" + kayit.sifre + "</td>");
+                satir.append("<td>" +
+                    "<img src='delete.png' width='25' height='25' id='" + i + "' onclick='kayitSil(this)'/>" +
+                    "<img src='update.png' width='25' height='25' id='" + i + "' onclick='kayitGuncelle(this)'/>" +
+                    "</td>");
+                
+                $("table tbody").append(satir);
+            }
+            
+
+        }
+        function kayitSil(buton) {
+            $("<div>Bu kaydı silmek istediğinizden emin misiniz?</div>").dialog({
+                modal: true,
+                title: "User System",
+                dialogClass: "carpiYok",
+                buttons: {
+                    "Kaydı Sil": function () {
+                        var index = parseInt(buton.id);
+                        kayitlar.splice(index, 1);
+                        localStorage.setItem("kayitlar", JSON.stringify(kayitlar));
+                        $(this).dialog("close");
+                        kayitGoruntule();
+                    },
+                    "İptal Et": function () {
+                        $(this).dialog("close");
+                    }
+                }
+
+            });
+
+        }
+
+        function kayitGuncelle(buton) {
+            var kayit = kayitlar[parseInt(buton.id)];
+            $.ajax({
+                url: "YeniKullanici.html",
+                method: "GET",
+                success: function (data, status) {
+                    var sayfa = $(data);
+                    sayfa.find("#txtAdSoyad").val(kayit.isim);
+                    sayfa.find("#txtEmail").val(kayit.mail);
+                    sayfa.find("#txtSifre").val(kayit.sifre);
+
+                    var alan = $("<div></div>");
+                    alan.append(sayfa);
+                    alan.dialog({
+                        width: 450,
+                        modal: true,
+                        title: "User System",
+                        dialogClass:"carpiYok",
+                        buttons: {
+                            Güncelle: function () {
+                                var isim = $("#txtAdSoyad").val();
+                                var mail = $("#txtEmail").val();
+                                var sifre = $("#txtSifre").val();
+
+                                var yeniKayit = { isim: isim, mail: mail, sifre: sifre };
+                                kayitlar[parseInt(buton.id)] = yeniKayit;
+                                localStorage.setItem("kayitlar", JSON.stringify(kayitlar));
+                                kayitGoruntule();
+
+                                $(this).dialog("close");
+                            },
+                            Vazgeç: function () {
+                                $(this).dialog("close");
+                            }
+
+                        }
+
+                    });
+
+                }
+            });
+        }
+
+        
+        function yeniKullanici() {
+
+            $.ajax({
+                url: "YeniKullanici.html",
+                method:"GET",
+                success: function (data, status) {
+                    var alan = $("<div></div>");
+                    alan.append(data);
+                    alan.dialog({
+                        modal: true,
+                        title: "User System",
+                        dialogClass: "carpiYok",
+                        width:450,
+                        buttons: {
+                            Kaydet: kaydet, //fonk u buraya koyduk
+                            Vazgeç:function() {
+                                $(this).dialog("close");
+                            
+                            }
+
+                        }
+                    });
+                }
+            });
+
+        }
+        function kaydet(index) {
+            var isim = $("#txtAdSoyad").val();
+            var mail = $("#txtEmail").val();
+            var sifre = $("#txtSifre").val();
+
+            var kayit = { isim: isim, mail: mail, sifre: sifre };
+            kayitlar.push(kayit);
+            localStorage.setItem("kayitlar", JSON.stringify(kayitlar));  //json nesnelerini string e ceviririz
+
+            $(this).dialog("close");
+            kayitGoruntule();
+
+        }
+    </script>
+</head>
+<!--//butona basınca tasarlanan html sayfayı bu html sayfada dialog gibi gösterıcegiz-->
+<body>
+    <div class="ui-widget">
+        <h2>Mevcut Kullanıcılar</h2>
+        <table class="ui-widget ui-widget-content" style="width:600px;">
+            <thead>
+                <tr class="ui-widget-header">
+                    <th>Ad Soyad</th>
+                    <th>E-Posta</th>
+                    <th>Şifre</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+              
+            </tbody>
+        </table>
+    </div>
+    <button onclick="yeniKullanici()">Yeni Kullanıcı</button>
+</body>
+</html>

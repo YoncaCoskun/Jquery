@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script>
+        //uygulama acılır acılmaz script taglarından sunucudan okunan bir veriyi okuyacagız ve div icerisine yazdıracagız(MicroSoft soruyor)
+        window.onload=function() {
+            var dosyaOkuyucu;
+
+            if (window.XMLHttpRequest) {  //eger window xmlhttprequest ı desteklıyorsa yani;ie,ie+7,firefox,opera safari
+                dosyaOkuyucu = new XMLHttpRequest();
+
+            } else {//desteklemeyen; ie6 ve ie5
+                dosyaOkuyucu = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            dosyaOkuyucu.onreadystatechange = function () {  //Dosya okuma sonrası(yukardan elde ettıgımız sonuclar)buraya yollanır.HataKodları:http://tr.wikipedia.org/wiki/HTTP_durum_kodlar%C4%B1
+                if (dosyaOkuyucu.status ==200 && dosyaOkuyucu.readyState==4) { //eger 200: ok ise ve 4: dosya okunabiliyorsa.
+                    var gelen = dosyaOkuyucu.responseText;
+                    document.getElementById("alan").textContent = gelen;  //okuma ıslemı tamamlandıysa bu yapıyor
+                }
+            }
+            dosyaOkuyucu.open("GET","Dosya.txt",true);//sadece dosya okuma ıslemı ıse get metodu yazarız(dosyaya asyncron sekılde ulasırız)
+            dosyaOkuyucu.send();
+        }
+
+    </script>
+
+</head>
+<body>
+
+    <!--------------------------------------GET------------------------->
+    <!--Soru  ısaretınden sonra verılmıs olan her yapı get oluyor-->
+    <!-----------------------------------------POST------------------------------>
+    <!--adrese soru ısaretı veremezsın postta-->
+
+    <!----------------------------AJAX(Asyncron javascript and xml)------------------>
+    Sunucumuzda(kendi bilgisayarımızdaki dosyayı okuyabiliriz mutlaka kendi bilgisayarımız olmalı ama baskasının bılgısayarına da baglanma durumumuz var) bulunan herhangi bir sayfayı okumak ve sayfadaki verileri asenkron bir sekilde getirmeye yarayan kod kutuphanesidir.
+    <div id="alan">
+
+
+    </div>
+</body>
+</html>
